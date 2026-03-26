@@ -1,0 +1,7 @@
+{
+    "Records":[
+        {
+            "body":"Lambda function failed to reach International taxes API for 'hol-billing-x' bucket and file 'billing_data_meat_may_2023.csv'"
+        }
+    ]
+}

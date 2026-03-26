@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.localstack/
+.terraform/
+terraform.tfstate*
+*.pem
+.env
+.DS_Store
+.vscode-server/
+.vscode/
+.cache/
+.copilot/

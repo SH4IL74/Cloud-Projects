@@ -1,0 +1,8 @@
+Transform: AWS::Serverless-2016-10-31
+Resources:
+ LambdaEc2DailySnapshot:
+  Type: AWS::Serverless::Function
+  Properties:
+    CodeUri: ./src/
+    Handler: lambda_function.lambda_handler
+    Runtime: python3.13
