@@ -4,11 +4,12 @@ A centralized monorepo for Cloud Engineering and DevOps projects, focusing on AW
 📁 Project Structure
 aws-environment/: Using python boto3 to provision AWS resources in AWS Management Console.
 loclastack-environment/: Using python boto3 to provision AWS resources in Localstack for practise.
+tf-ansible-lab/: Terraform and Ansible to provision AWS resources
 🛠️ Tech Stack
 Cloud Provider: Amazon Web Services (AWS)
 Local Development: LocalStack, Docker
 Automation: Python 3.x, Boto3
-Infrastructure: Terraform
+Infrastructure: Terraform, Ansible
 Environment: WSL (Ubuntu)
 🚀 How to Use
 Clone the repository: git clone https://github.com/SH4IL74/Cloud-Projects.git
