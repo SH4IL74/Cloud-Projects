@@ -1,0 +1,11 @@
+Resources:
+  EC2LambdaAutomation:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./src/
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.13
+      Environment:
+        Variables:
+          # This tells the Lambda to look at your computer, not itself
+          LOCALSTACK_HOSTNAME: "host.docker.internal"
