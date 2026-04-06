@@ -1,0 +1,21 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "ap-south-1",
+      "eventTime": "2026-04-06T12:00:00.000Z",
+      "eventName": "ObjectCreated:Put",
+      "s3": {
+        "bucket": {
+          "name": "my-billing-bucket-shail",
+          "arn": "arn:aws:s3:::my-billing-bucket-shail"
+        },
+        "object": {
+          "key": "billing_data_meat_june_2023.csv",
+          "size": 1024
+        }
+      }
+    }
+  ]
+}
