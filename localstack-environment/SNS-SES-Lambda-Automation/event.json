@@ -1,0 +1,8 @@
+{
+  "Records": [{
+    "s3": {
+      "bucket": { "name": "my-source-bucket" },
+      "object": { "key": "billing_data_meat_may_2023.csv" }
+    }
+  }]
+}

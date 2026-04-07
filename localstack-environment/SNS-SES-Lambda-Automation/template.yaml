@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  SNS-SES-Lambda-Automation
+  SAM Template for S3, SNS, and Lambda automation in LocalStack
+
+Resources:
+  # 1. Source S3 Bucket
+  SourceBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-source-bucket
+
+  # 2. Processed S3 Bucket
+  ProcessedBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-processed-bucket
+
+  # 3. Error S3 Bucket
+  ErrorBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-error-bucket
+
+  # 4. SNS Topic for API Failures
+  TaxesSNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: TaxesAPIConnectionError
+
+  # 5. Lambda Function
+  S3ProcessorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      # Use '.' because lambda_function.py is in the same folder as this template
+      CodeUri: .
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.9
+      # Increased timeout to prevent the 30s hang you experienced
+      Timeout: 60
+      MemorySize: 256
+      Events:
+        S3Event:
+          Type: S3
+          Properties:
+            Bucket: !Ref SourceBucket
+            Events: s3:ObjectCreated:*
+      Policies:
+        - S3ReadPolicy:
+            BucketName: my-source-bucket
+        - S3WritePolicy:
+            BucketName: my-processed-bucket
+        - S3WritePolicy:
+            BucketName: my-error-bucket
+        - SNSPublishMessagePolicy:
+            TopicName: TaxesAPIConnectionError
+
+Outputs:
+  SourceBucketName:
+    Value: !Ref SourceBucket
+  SNSTopicArn:
+    Value: !Ref TaxesSNSTopic
