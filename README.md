@@ -1,5 +1,7 @@
 ☁️ Cloud-Projects Workspace
 A centralized monorepo for Cloud Engineering and DevOps projects, focusing on AWS automation and Infrastructure as Code (IaC).
+It contains various projects on cloud computing like managing elastic ips , providing sns and ses service to user if there is any change in the 
+infrastructure he/she has designed .
 
 📁 Project Structure
 aws-environment/: Using python boto3 to provision AWS resources in AWS Management Console.
