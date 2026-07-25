@@ -1,0 +1,13 @@
+
+services:
+  localstack:
+    container_name: private_cloud_localstack
+    image: localstack/localstack:latest
+    ports:
+      - "127.0.0.1:4566:4566"            # Localstack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # External services
+    environment:
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
