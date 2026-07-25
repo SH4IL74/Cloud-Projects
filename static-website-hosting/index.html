@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Resume - Shail Purohit</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background-color: #f4f4f9; color: #333; }
+        .card { background: white; padding: 30px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; margin-bottom: 5px; }
+        h3 { color: #2980b9; }
+        ul { padding-left: 20px; }
+        .tag { background: #e1f5fe; color: #0288d1; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; margin-right: 4px; }
+        .counter-box { margin-top: 20px; padding: 10px; background: #eef9f1; border-left: 4px solid #2ecc71; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Shail Purohit</h1>
+        <p><strong>Aspiring Cloud Engineer & Cloud Architect</strong></p>
+        <hr>
+        
+        <h3>About Me</h3>
+        <p>Computer Science student focused on Cloud Infrastructure, Serverless Automation, and IaC.</p>
+
+        <h3>Core Skills</h3>
+        <p>
+            <span class="tag">AWS</span> 
+            <span class="tag">Terraform</span> 
+            <span class="tag">Python (Boto3)</span> 
+            <span class="tag">Linux / Bash</span> 
+            <span class="tag">Docker</span> 
+            <span class="tag">LocalStack</span>
+        </p>
+
+        <h3>Cloud Projects</h3>
+        <ul>
+            <li><strong>Automated Cloud Resume Pipeline:</strong> Provisioned AWS S3, DynamoDB, and Lambda serverless architecture locally using Terraform inside WSL 2 / LocalStack.</li>
+        </ul>
+
+        <div class="counter-box">
+            👀 <strong>Total Page Visits:</strong> <span id="counter">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        // Call local Lambda endpoint
+        fetch('http://localhost:4566/2015-03-31/functions/visitor_counter/invocations', {
+            method: 'POST',
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            let body = JSON.parse(data.body);
+            document.getElementById('counter').innerText = body.views;
+        })
+        .catch(error => {
+            console.error('Error fetching visitor count:', error);
+            document.getElementById('counter').innerText = '1';
+        });
+    </script>
+</body>
+</html>

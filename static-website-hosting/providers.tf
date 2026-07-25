@@ -1,0 +1,27 @@
+terraform {
+    required_providers{
+        aws = {
+            source = "hashicorp/aws"
+            version = "~> 5.0"
+        }
+    }
+}
+
+# Configure AWS Provider to talk to Localstack
+provider "aws"{
+    region = "ap-south-1"
+    access_key = "mock-key"
+    secret_key = "mock_secret"
+    s3_use_path_style = true
+    skip_credentials_validation = true
+    skip_metadata_api_check = true
+    skip_requesting_account_id = true
+
+    endpoints{
+        s3 = "http://localhost:4566"
+        dynamodb = "http://localhost:4566"
+        lambda = "http://localhost:4566"
+        iam      = "http://localhost:4566"
+        sts      = "http://localhost:4566"
+    }
+}
