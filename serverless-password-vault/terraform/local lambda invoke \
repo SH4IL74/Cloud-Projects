@@ -1,0 +1,43 @@
+{
+    "Functions": [
+        {
+            "FunctionName": "password-vault-handler",
+            "FunctionArn": "arn:aws:lambda:us-east-1:000000000000:function:password-vault-handler",
+            "Runtime": "python3.11",
+            "Role": "arn:aws:iam::000000000000:role/vault_lambda_exec_role",
+            "Handler": "handler.lambda_handler",
+            "CodeSize": 1676,
+            "Description": "",
+            "Timeout": 3,
+            "MemorySize": 128,
+            "LastModified": "2026-08-18T07:56:14.820151+0000",
+            "CodeSha256": "8kDcyOccuMwZileVhdsGvatM8P+tbN0WKbL7yMaROUs=",
+            "Version": "$LATEST",
+            "Environment": {
+                "Variables": {
+                    "AWS_ENDPOINT_URL": "http://localhost:4566",
+                    "TABLE_NAME": "vault-records"
+                }
+            },
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "21f45439-6b31-46af-8426-fcc562f8efe1",
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/password-vault-handler"
+            }
+        }
+    ]
+}
